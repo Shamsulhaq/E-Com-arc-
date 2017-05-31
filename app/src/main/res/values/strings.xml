@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">FinalProject</string>
 
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">LOGIN</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="no_text"> </string>
+    <string name="sign_up_button">SIGN UP</string>
+    <string name="log_in">Login</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
