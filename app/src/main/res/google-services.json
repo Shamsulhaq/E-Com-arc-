@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "835540802195",
+    "firebase_url": "https://e-com-arc.firebaseio.com",
+    "project_id": "e-com-arc",
+    "storage_bucket": "e-com-arc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835540802195:android:208a80e84eeaaac4",
+        "android_client_info": {
+          "package_name": "com.example.sam.finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835540802195-pk9glks8tlie64e0i4g90rorm7fo3jno.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPNBrQbAI76-347fwbOYudXWLrmc5TTwE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
