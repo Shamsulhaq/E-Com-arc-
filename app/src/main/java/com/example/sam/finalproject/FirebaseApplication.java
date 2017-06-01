@@ -45,7 +45,12 @@ public class FirebaseApplication extends Application {
                 if (null != user){
 
                     Intent profileIntent = new Intent (context,ProfileActivity.class);
+                    context.startActivity(profileIntent);
                 }
+            }
+
+            public void isUserCurrentlyLogin(final Context context){
+
             }
         }
 
