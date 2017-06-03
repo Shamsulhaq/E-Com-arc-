@@ -88,10 +88,33 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (!Helper.isValidEmail(enterEmail)){
 
-                        Helper.displayMessageToast(LoginActivity.this,"Invalidate email must be filled");
+                        Helper.displayMessageToast(LoginActivity.this,
+                                "Invalidate email must be filled");
+                            return;
                     }
+                    ((FirebaseApplication)getApplication()).loginAUser(LoginActivity.this,enterEmail,enterPassword
+                    ,loginError);
 
                 }
             });
+
+        /*ok now bug thik kor boisa boisa*/
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //mAuth.addAuthStateListener(((FirebaseApplication)getApplication()).mAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (((FirebaseApplication)getApplication()).mAuthListener != null){
+
+            //mAuth.removeAuthStateListener(((FirebaseApplication)getApplication()
+            // ).mAuthListener);
+        }
     }
 }
