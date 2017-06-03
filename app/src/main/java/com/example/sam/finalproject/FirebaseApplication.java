@@ -59,12 +59,26 @@ public class FirebaseApplication extends Application {
 
             public void isUserCurrentlyLogin(final Context context){
 
+                mAuthListener = new FirebaseAuth.AuthStateListener() {
+                    @Override
+                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                        if (null != user){
+                            Intent profileIntent = new Intent(context,PeofileActivity.class);
+                            context.startActivity(profileIntent);
+                        }else {
+
+                        }
+                    }
+                }
+
 
 
             }
         }
 
-    }
+
 
     public void loginAUser(final Context context, String email, String password,
                            final TextView errorMessage) {
