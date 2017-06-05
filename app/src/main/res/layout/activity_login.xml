@@ -42,7 +42,7 @@
         android:layout_below="@+id/login_error"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_8sdp"
-        android:singleLine="true" />
+        />
 
     <EditText
         android:id="@+id/password"
@@ -57,7 +57,7 @@
         android:layout_below="@+id/email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_8sdp"
-        android:singleLine="true" />
+        />
 
     <Button
         android:id="@+id/login_button"
