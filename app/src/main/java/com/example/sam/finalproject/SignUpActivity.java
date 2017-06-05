@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
+
+import Helper.Helper;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -64,6 +67,25 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
         final Button loginButton = (Button)findViewById(R.id.login_button);
-        
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String enteredEmail = emailInput.getText().toString();
+                String enteredPassword = passwordInput.getText().toString();
+
+                if(TextUtils.isEmpty(enteredEmail) || TextUtils.isEmpty(enteredPassword)){
+                    Helper.displayMessageToast(SignUpActivity.this, "Login fields must be filled");
+                    return;
+                }
+
+                if(!Helper.isValidEmail(enteredEmail)){
+                    Helper.displayMessageToast(SignUpActivity.this, "Invalidate email entered");
+                    return;
+                }
+
+                ((FirebaseApplication)getApplication()).createNewUser(SignUpActivity.this,
+                        enteredEmail, enteredPassword, loginError);
+            }
+        });
     }
 }
