@@ -25,7 +25,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".ProfileFragment"></activity>
+        <activity android:name=".ProfileFragment" />
+        <activity android:name=".EditProfile"></activity>
     </application>
 
 </manifest>
