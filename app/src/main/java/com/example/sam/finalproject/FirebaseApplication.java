@@ -32,7 +32,7 @@ public class FirebaseApplication extends Application {
         return firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    public String getFirebaseAuthenticationId(){
+    public String getFirebaseUserAuthenticateId(){
         String userId = null;
         if(firebaseAuth.getCurrentUser() != null){
 
@@ -42,22 +42,15 @@ public class FirebaseApplication extends Application {
         return userId;
     }
 
-    public void checkUserLogin(final Context context){
+        public void checkUserLogin(final Context context){
+        if (firebaseAuth.getCurrentUser() != null){
+            Intent profileIntent = new Intent(context,ProfileActivity.class);
+            context.startActivity(profileIntent);
+        }
+    }
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                if (null != user){
-
-                    Intent profileIntent = new Intent (context,ProfileActivity.class);
-                    context.startActivity(profileIntent);
-                }
-            }
-
-            public void isUserCurrentlyLogin(final Context context){
+    public void isUserCurrentlyLogin(final Context context){
 
                 mAuthListener = new FirebaseAuth.AuthStateListener() {
                     @Override
@@ -65,18 +58,17 @@ public class FirebaseApplication extends Application {
 
                         FirebaseUser user = firebaseAuth.getCurrentUser();
                         if (null != user){
-                            Intent profileIntent = new Intent(context,PeofileActivity.class);
+                            Intent profileIntent = new Intent(context,ProfileActivity.class);
                             context.startActivity(profileIntent);
                         }else {
+                            Intent loginIntent = new Intent(context,LoginActivity.class);
+                            context.startActivity(loginIntent);
 
                         }
                     }
-                }
+                };
+    }
 
-
-
-            }
-        }
 
 
 
@@ -103,4 +95,22 @@ public class FirebaseApplication extends Application {
                     }
                 });
     }
+
+    public void createNewUser(Context context, String email, String password,
+                              final TextView errorMessage) {
+
+        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener((Activity)
+                context, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+
+                if (!task.isSuccessful()) {
+                    errorMessage.setText("Failed to login. Invalid user");
+                }
+
+            }
+        });
+    }
+
 }
